@@ -4,15 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Uye implements IUye{
+    private static int sonUyeNumarasi = 1000;
     private String ad;
     private String soyad;
     private int uyeNumarasi;
     private List<Kitap> oduncAlinanKitaplar;
 
-    public Uye(String ad, String soyad, int uyeNumarasi) {
+    public Uye(String ad, String soyad) {
         this.ad = ad;
         this.soyad = soyad;
-        this.uyeNumarasi = uyeNumarasi;
+        this.uyeNumarasi = ++sonUyeNumarasi;
         this.oduncAlinanKitaplar = new ArrayList<>();
     }
 

@@ -8,35 +8,36 @@ public class KitapBilim extends Kitap {
     @Override
     public String toString() {
         return "KitapBilim{" +
-                "ISBN='" + ISBN + '\'' +
-                ", baslik='" + baslik + '\'' +
-                ", yazar='" + yazar + '\'' +
-                ", yayinYili=" + yayinYili +
-                ", sayfaSayisi=" + sayfaSayisi +
-                ", durum=" + durum +
+                "oid=" + getOid() +
+                ", ISBN='" + getISBN() + '\'' +
+                ", baslik='" + getBaslik() + '\'' +
+                ", yazar='" + getYazar() + '\'' +
+                ", yayinYili=" + getYayinYili() +
+                ", sayfaSayisi=" + getSayfaSayisi() +
+                ", durum=" + getDurum() +
                 '}';
     }
 
     @Override
     public void oduncVer() {
-        if (durum == Durum.MEVCUTDEGIL) {
+        if (getDurum() == Durum.MEVCUTDEGIL) {
             System.out.println("Kitap ödünç alınamaz. Mevcut değil.");
-        } else if (durum == Durum.ODUNCTE) {
+        } else if (getDurum() == Durum.ODUNCTE) {
             System.out.println("Kitap ödünç alınamaz. Zaten ödünçte.");
         } else {
-            durum = Durum.ODUNCTE;
+            setDurum(Durum.ODUNCTE);
             System.out.println("Kitap başarıyla ödünç verildi.");
         }
     }
 
     @Override
     public void iadeAl() {
-        if (durum == Durum.MEVCUTDEGIL) {
+        if (getDurum() == Durum.MEVCUTDEGIL) {
             System.out.println("Kitap iade edilemez, sistemde mevcut değil.");
-        } else if (durum == Durum.ODUNCALINABILIR) {
+        } else if (getDurum() == Durum.ODUNCALINABILIR) {
             System.out.println("Kitap iade edilemez. Zaten kütüphanede.");
         } else {
-            durum = Durum.ODUNCALINABILIR;
+            setDurum(Durum.ODUNCALINABILIR);
             System.out.println("Kitap başarıyla iade alındı");
         }
     }
